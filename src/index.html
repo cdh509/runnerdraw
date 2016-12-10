@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Runnerdraw</title>
+</head>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		function run(rand){
+			var start = 0;
+			var time = setInterval(function(){
+				start++;
+				$('.arrow').css("transform","rotate(" + start + "deg)");
+				if(start >= rand*360){
+					clearInterval(time);
+				}
+			},10);
+		};		
+		$('.spell img').click(function(){
+			var rands =  Number(Math.random().toFixed(1)) + 3;
+			run(rands);
+		});
+	});
+</script>
+<style type="text/css">
+	.spell{
+		width: 500px;
+		position: relative;
+	}
+	.arrow{
+		height: 100px;
+		width: 100px;
+		position: absolute;
+		top: 75px;
+		left: 225px;
+		z-index: 1;
+		background:url(images/0370100199.png) no-repeat;
+	    background-size: contain;			
+		opacity:0.5;
+		transform:rotate(0deg);
+		transform-origin:25px 174px;
+	}
+	.spell img {
+		width: 100%;
+	}
+</style>
+<body>
+	<div class="outbox">
+		<div class="spell">
+			<div class="arrow">
+			</div>
+			<img src="images/img.png">
+		</div>				
+	</div>
+</body>
+</html>
